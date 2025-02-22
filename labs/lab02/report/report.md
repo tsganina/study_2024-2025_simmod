@@ -154,7 +154,8 @@ TCP-окно (или окно перегрузки) — это один из к�
 Стоит отметить, что до добавления строчки:
 ```
 after 1000
-exec xgraph -fg purple -bg lightblue -bb -tk -x time -t "TCPVegasCWND" WindowVsTimeReno &
+exec xgraph -fg purple -bg lightblue -bb -tk -x time -t 
+  "TCPVegasCWND" WindowVsTimeReno &
 exec xgraph -fg red -bg pink -bb -tk -x time -y queue temp.queue &
 
 ```
@@ -184,8 +185,10 @@ puts $f \n\"Srednaya_Ochered
 Это изменило подписи графиков в легенде.
 
 ```
-exec xgraph -fg purple -bg lightblue -bb -tk -x time -t "TCPNewRenoCWND" <...>
-exec xgraph -fg red -bg pink -bb -tk -x time -y queue temp.queue &
+exec xgraph -fg purple -bg lightblue 
+  -bb -tk -x time -t "TCPNewRenoCWND" <...>
+exec xgraph -fg red -bg pink 
+  -bb -tk -x time -y queue temp.queue &
 exit 0
 ```
 
@@ -206,9 +209,11 @@ puts $windowVsTime \"Screen_Size"
 
 ```
 # Агенты и приложения:
-set tcp1 [$ns create-connection TCP/Newreno $node_(s1) TCPSink $node_(s3) 0]
+set tcp1 [$ns create-connection 
+  TCP/Newreno $node_(s1) TCPSink $node_(s3) 0]
 $tcp1 set window_ 15
-set tcp2 [$ns create-connection TCP/Reno $node_(s2) TCPSink $node_(s3) 1]
+set tcp2 [$ns create-connection 
+  TCP/Reno $node_(s2) TCPSink $node_(s3) 1]
 ```
 
 ![NewReno](image/newreno_both.png){#fig:005 width=70%}
@@ -258,7 +263,7 @@ puts $f "0.Color: Purple"
 puts $f "1.Color: Black"
 puts $f "Device: Postscript"
 if { [info exists tchan_] } {
-close $tchan_В ходе работы было исследовано взаимодействие протокола TCP и алгоритма управления очередью RED. Результаты показали, что различные реализации TCP, такие как Reno, NewReno и Vegas, по-разному реагируют на изменение длины очереди и размера окна. Алгоритм RED эффективно регулирует сброс пакетов, предотвращая перегрузку сети, а TCP Vegas показал лучшие результаты в минимизации потерь пакетов.
+close $tchan_
 }
 exec rm -f temp.q temp.a
 exec touch temp.a temp.q
@@ -269,8 +274,10 @@ puts $f \n\"Srednaya_Ochered
 exec cat temp.a >@ $f
 close $f
 # Запуск xgraph с графиками окна TCP и очереди:
-exec xgraph -fg purple -bg lightblue -bb -tk -x time -t "TCPRenoCWND" WindowVsTimeReno &
-exec xgraph -fg red -bg pink -bb -tk -x time -y queue temp.queue &
+exec xgraph -fg purple -bg lightblue -bb -tk -x time -t 
+  "TCPRenoCWND" WindowVsTimeReno &
+exec xgraph -fg red -bg pink -bb -tk -x time -y 
+  queue temp.queue &
 exit 0
 }
 
@@ -301,9 +308,11 @@ $ns duplex-link $node_(s3) $node_(r2) 10Mb 4ms DropTail
 $ns duplex-link $node_(s4) $node_(r2) 10Mb 5ms DropTail
 
 # Агенты и приложения:
-set tcp1 [$ns create-connection TCP/Reno $node_(s1) TCPSink $node_(s3) 0]
+set tcp1 [$ns create-connection TCP/Reno $node_(s1) 
+  TCPSink $node_(s3) 0]
 $tcp1 set window_ 15
-set tcp2 [$ns create-connection TCP/Reno $node_(s2) TCPSink $node_(s3) 1]
+set tcp2 [$ns create-connection TCP/Reno $node_(s2) 
+  TCPSink $node_(s3) 1]
 $tcp2 set window_ 15
 set ftp1 [$tcp1 attach-source FTP]
 set ftp2 [$tcp2 attach-source FTP]
@@ -378,8 +387,10 @@ puts $f \n\"Srednaya_Ochered
 exec cat temp.a >@ $f
 close $f
 # Запуск xgraph с графиками окна TCP и очереди:
-exec xgraph -fg purple -bg lightblue -bb -tk -x time -t "TCPRenoCWND" WindowVsTimeReno &
-exec xgraph -fg red -bg pink -bb -tk -x time -y queue temp.queue &
+exec xgraph -fg purple -bg lightblue -bb -tk -x 
+  time -t "TCPRenoCWND" WindowVsTimeReno &
+exec xgraph -fg red -bg pink -bb -tk -x time -y 
+  queue temp.queue &
 exit 0
 }
 
@@ -411,9 +422,11 @@ $ns duplex-link $node_(s4) $node_(r2) 10Mb 5ms DropTail
 
 
 # Агенты и приложения:
-set tcp1 [$ns create-connection TCP/Newreno $node_(s1) TCPSink $node_(s3) 0]
+set tcp1 [$ns create-connection TCP/Newreno 
+  $node_(s1) TCPSink $node_(s3) 0]
 $tcp1 set window_ 15
-set tcp2 [$ns create-connection TCP/Reno $node_(s2) TCPSink $node_(s3) 1]
+set tcp2 [$ns create-connection TCP/Reno 
+  $node_(s2) TCPSink $node_(s3) 1]
 $tcp2 set window_ 15
 set ftp1 [$tcp1 attach-source FTP]
 set ftp2 [$tcp2 attach-source FTP]
@@ -488,8 +501,10 @@ puts $f \n\"Srednaya_Ochered
 exec cat temp.a >@ $f
 close $f
 # Запуск xgraph с графиками окна TCP и очереди:
-exec xgraph -fg purple -bg lightblue -bb -tk -x time -t "TCPVegasCWND" WindowVsTimeReno &
-exec xgraph -fg red -bg pink -bb -tk -x time -y queue temp.queue &
+exec xgraph -fg purple -bg lightblue -bb -tk -x time -t 
+  "TCPVegasCWND" WindowVsTimeReno &
+exec xgraph -fg red -bg pink -bb -tk -x time -y 
+  queue temp.queue &
 exit 0
 }
 
@@ -520,9 +535,11 @@ $ns duplex-link $node_(s3) $node_(r2) 10Mb 4ms DropTail
 $ns duplex-link $node_(s4) $node_(r2) 10Mb 5ms DropTail
 
 # Агенты и приложения:
-set tcp1 [$ns create-connection TCP/Vegas $node_(s1) TCPSink $node_(s3) 0]
+set tcp1 [$ns create-connection TCP/Vegas 
+  $node_(s1) TCPSink $node_(s3) 0]
 $tcp1 set window_ 15
-set tcp2 [$ns create-connection TCP/Reno $node_(s2) TCPSink $node_(s3) 1]
+set tcp2 [$ns create-connection TCP/Reno 
+  $node_(s2) TCPSink $node_(s3) 1]
 $tcp2 set window_ 15
 set ftp1 [$tcp1 attach-source FTP]
 set ftp2 [$tcp2 attach-source FTP]
@@ -531,7 +548,8 @@ set ftp2 [$tcp2 attach-source FTP]
 set windowVsTime [open WindowVsTimeReno w]
 puts $windowVsTime "0.Color: blue"
 puts $windowVsTime \"Screen_Size"
-set qmon [$ns monitor-queue $node_(r1) $node_(r2) [open qm.out w] 0.1];
+set qmon [$ns monitor-queue $node_(r1) 
+  $node_(r2) [open qm.out w] 0.1];
 [$ns link $node_(r1) $node_(r2)] queue-sample-timeout;
 
 # Мониторинг очереди:
