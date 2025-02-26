@@ -1,0 +1,93 @@
+#!/usr/bin/gnuplot -persist
+
+# Устанавливаем кодировку UTF-8 для поддержки русских символов
+set encoding utf8
+
+# Устанавливаем терминал вывода PNG с поддержкой прозрачности (cairo)
+# Задаём шрифт Arial размером 9
+set term pngcairo font "Arial,9" enhanced
+
+# == График 1: Окно TCP 1-го источника ==
+
+# Определяем выходной файл для графика
+set output 'window_1.png'
+
+# Задаём заголовок графика
+set title "Изменение размера окна TCP 1-го источника при N=30"
+
+# Подписи осей координат
+set xlabel "Время, t [сек]"
+set ylabel "Размер окна CWND [сегменты]"
+
+# Устанавливаем стиль сетки
+set grid
+
+# Задаём цвета графика: 
+# линии — brown, фон — светло-жёлтый
+set style line 1 lc rgb "brown" lt 1 lw 2 pt 7
+set object 1 rectangle from screen 0,0 to screen 1,1 behind fillcolor rgb "#FFFFCC" fillstyle solid
+
+# Построение графика, используя 1-й и 2-й столбцы файла WindowVsTimeRenoOne
+plot "WindowVsTimeRenoOne" using 1:2 with lines ls 1 title "Размер окна TCP"
+
+
+
+# == График 2: Окно TCP всех источников ==
+
+# Определяем выходной файл для графика
+set output 'window_all.png'
+
+# Задаём заголовок графика
+set title "Изменение размера окна TCP на всех N источниках при N=30"
+
+# Подписи осей координат
+set xlabel "Время, t [сек]"
+set ylabel "Размер окна CWND [сегменты]"
+
+# Построение графика
+set object 2 rectangle from screen 0,0 to screen 1,1 behind fillcolor rgb "pink" fillstyle solid
+set style line 2 lc rgb "#FF0000" lt 1 lw 1 pt 7
+
+plot "WindowVsTimeRenoAll" using 1:2 with lines ls 2 title "Размер окна TCP"
+
+
+
+# == График 3: Длина очереди ==
+
+# Определяем выходной файл для графика
+set output 'queue.png'
+
+# Заголовок графика
+set title "Изменение длины очереди на линке (R1–R2)"
+
+# Подписи осей
+set xlabel "Время, t [сек]"
+set ylabel "Текущая длина очереди [пакеты]"
+
+# Фон — светло-зеленый
+set object 3 rectangle from screen 0,0 to screen 1,1 behind fillcolor rgb "#90EE90" fillstyle solid
+set style line 3 lc rgb "#008000" lt 1 lw 1 pt 7
+
+# Построение графика, используя 1-й и 2-й столбцы файла temp.q
+plot "temp.q" using 1:2 with lines ls 3 title "Текущая длина очереди"
+
+
+
+# == График 4: Средняя длина очереди ==
+
+# Определяем выходной файл
+set output 'average_queue.png'
+
+# Заголовок графика
+set title "Изменение средней длины очереди на линке (R1–R2)"
+
+# Подписи осей
+set xlabel "Время, t [сек]"
+set ylabel "Средняя длина очереди [пакеты]"
+
+# Фон — светло-голубой
+set object 4 rectangle from screen 0,0 to screen 1,1 behind fillcolor rgb "#ADD8E6" fillstyle solid
+set style line 4 lc rgb "#800080" lt 1 lw 2 pt 7
+
+# Построение графика, используя 1-й и 2-й столбцы файла temp.a
+plot "temp.a" using 1:2 with lines ls 4 title "Средняя длина очереди"
