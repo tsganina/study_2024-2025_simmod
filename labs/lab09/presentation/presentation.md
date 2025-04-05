@@ -8,7 +8,7 @@ author:
 institute:
   - Группа НФИбд-01-22
   - Российский университет дружбы народов, Москва, Россия
-date: 25 марта 2025
+date: 05 апреля 2025
 
 ## i18n babel
 babel-lang: russian
@@ -73,6 +73,69 @@ header-includes:
 ## Запуск модели «Накорми студентов»
 
 ![Запуск модели «Накорми студентов»](image/5.png){#fig:004 width=40%}
+
+## Отчёт о Пространстве состояний для модели «Накорми студентов»
+
+```
+ Statistics
+------------------------------------------------------------------------
+  State Space
+     Nodes:  4
+     Arcs:   3
+     Secs:   0
+     Status: Full
+  Scc Graph
+     Nodes:  4
+     Arcs:   3
+     Secs:   0
+ Boundedness Properties
+------------------------------------------------------------------------
+```
+
+## Отчёт о Пространстве состояний для модели «Накорми студентов»
+
+```
+  Best Integer Bounds
+                             Upper      Lower
+     nakormi_studenta'food 1 5          2
+     nakormi_studenta'hungry_student 1
+                             3          0
+     nakormi_studenta'satisfied_student 1
+                             3          0
+```
+
+## Отчёт о Пространстве состояний для модели «Накорми студентов»
+
+```
+  Best Upper Multi-set Bounds
+     nakormi_studenta'food 1
+                         5`pasty
+     nakormi_studenta'hungry_student 1
+                         3`student
+     nakormi_studenta'satisfied_student 1
+                         3`student
+```
+
+## Отчёт о Пространстве состояний для модели «Накорми студентов»
+
+```
+Best Lower Multi-set Bounds
+     nakormi_studenta'food 1
+                         2`pasty
+     nakormi_studenta'hungry_student 1
+                         empty
+     nakormi_studenta'satisfied_student 1
+                         empty
+```
+
+## Отчёт о Пространстве состояний для модели «Накорми студентов»
+
+```
+ Fairness Properties
+------------------------------------------------------------------------
+     No infinite occurrence sequences.
+
+```
 
 ## Пространство состояний для модели «Накорми студентов»
 
